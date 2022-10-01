@@ -60,4 +60,15 @@ class User extends Authenticatable
     protected $appends = [
         'profile_photo_url',
     ];
+
+    public function toArray()
+    {
+        $array = parent::toArray();
+        return $array;
+    }
+
+    public function isAdmin()
+    {
+        return $this->hasRole('admin');
+    }
 }

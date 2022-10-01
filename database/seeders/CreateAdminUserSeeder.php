@@ -23,11 +23,10 @@ class CreateAdminUserSeeder extends Seeder
             'password' => Hash::make('Jlegallpro*72')
         ]);
 
+        // Attribute user role
         $role = Role::findOrCreate('admin');
-
         $permissions = Permission::pluck('id','id')->all();
         $role->syncPermissions($permissions);
-
         $user->assignRole([$role->id]);
     }
 }
